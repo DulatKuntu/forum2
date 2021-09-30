@@ -1,0 +1,83 @@
+{{define "profile"}}
+
+<!doctype html>
+    <html>
+        <head>
+            <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+            <link rel="stylesheet" href="https://code.getmdl.io/1.3.0/material.indigo-pink.min.css">
+            <script defer src="https://code.getmdl.io/1.3.0/material.min.js"></script>
+            
+        </head>
+        <body>
+            <div class="site mdl-layout mdl-js-layout">    
+                {{if .LoggedIn}}       
+                    {{template "authorized_header"}}
+                {{else}}
+                    {{template "unauthorized_header"}}
+                {{end}}
+                <main class="mdl-layout__content">
+                    <div class="mdl-grid" style="width: 100%">
+                        <div class="mdl-layout-spacer"></div>
+                        <div class="mdl-cell mdl-cell--4-col" style="justify-content: center; width: 80%;">
+                            <div class="page-content" style="width: 100%;">
+                                <div  class="mdl-card-square mdl-card mdl-shadow--2dp" style="width: 100%; margin: 20px; padding: 0px; background: rgb(160, 159, 159);">
+                                    <div class="mdl-card__supporting-text" style="overflow-wrap: break-word;">
+                                        
+                                        <div class="mdl-grid" style="width: 100%">
+                                            <table style="width: 100%;">
+                                                <tr>
+                                                    <td>ID</td>
+                                                    <td>{{.User.UserID}}</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>Username</td>
+                                                    <td>{{.User.Username}}</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>Email</td>
+                                                    <td>{{.User.Email}}</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>Posts count</td>
+                                                    <td>{{len .Posts}}</td>
+                                                </tr>
+                                            </table>
+                                        </div>
+                                        
+                                        
+                                    </div>
+                                    
+                                </div>
+                             </div>
+
+                             {{range $post := .Posts}}
+                                <div id="postid{{$post.PostID}}" class="mdl-card-square mdl-card mdl-shadow--2dp" style="width: 100%; margin: 20px; padding: 0px; background:  rgb(206, 200, 211);">
+                                    <div class="mdl-card__supporting-text" style="overflow-wrap: break-word;">
+                                        <div class="mdl-grid" style="width: 100%">
+                                            <div class="mdl-layout-spacer"></div>
+                                            <img  class="mdl-cell mdl-cell--2-col" src="{{$post.Image}}" alt="" >
+                                            <div class="mdl-layout-spacer"></div>
+                                        </div>
+                                        <div class="mdl-grid" style="width: 100%">
+                                            <div class="mdl-layout-spacer"></div>
+                                                <h4>{{$post.Title}}</h4>
+                                            <div class="mdl-layout-spacer"></div>
+                                        </div>
+                                        
+                                        <pre>{{$post.Text}}</pre>
+                                       
+                                    </div>
+                                    
+                                </div>
+                                {{end}}
+                        </div>
+                        <div class="mdl-layout-spacer"></div>
+                    </div>
+                </main>
+                {{template "footer"}}
+            </div>
+
+        </body>
+    </html>
+
+{{end}}

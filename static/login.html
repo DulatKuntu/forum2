@@ -1,0 +1,74 @@
+{{define "login"}}
+    <!doctype html>
+    <html>
+        <head>
+            <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+            <link rel="stylesheet" href="https://code.getmdl.io/1.3.0/material.indigo-pink.min.css">
+            <script defer src="https://code.getmdl.io/1.3.0/material.min.js"></script>
+            
+        </head>
+        <body>
+            <div class="site mdl-layout mdl-js-layout" >           
+                {{if .LoggedIn}}
+                  {{template "authorized_header"}}
+                {{else}}
+                  {{template "unauthorized_header"}}
+                {{end}}
+                <main class="mdl-layout__content">
+                    <div class="mdl-grid">
+                        <div class="mdl-layout-spacer"></div>
+                        <div class="mdl-cell mdl-cell--4-col" style="justify-content: center;">
+                            <div class="page-content">
+                                <div class="mdl-card-square mdl-card mdl-shadow--2dp">
+                                    <div class="mdl-card__title">
+                                  <h2 class="mdl-card__title-text">Log In</h2>
+                                  </div>
+                                  {{ if eq .Status "LOGGEDIN"}}
+                                    <div class="mdl-card__title">
+                                      <h3 class="mdl-card__title-text" style="color: green;">Successfully logged in!</h3>
+                                      <div class="mdl-card__supporting-text">
+                                        now go to login page
+                                        <button type="submit" class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored">
+                                          Login
+                                        </button>
+                                      </div>
+
+                                    </div>
+                                    {{else}}
+                                    <div class="mdl-card__supporting-text">
+                                    
+                                    <form action="/login" method="POST">
+                                      <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+                                        <input class="mdl-textfield__input" type="text" id="login" name="login" placeholder="username or email" value="{{.User.Username}}">
+                                        <label class="mdl-textfield__label" for="name">Username or email</label>
+                                      </div>
+                                      <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+                                        <input class="mdl-textfield__input" type="password" id="password" name="password">
+                                        <label class="mdl-textfield__label" for="password">Password</label>
+                                      </div>
+                                      <button type="submit" class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored">
+                                        Log In
+                                      </button>
+                                      or <a href="/signup">signup</a>
+                                    </form>
+                                    {{range $error := .Errors}}
+                                        <p style="color: red;">{{$error}}</p>
+                                    {{end}}
+                                    </div>
+                                      
+                                    {{end}}
+                                  </div>
+                             </div>
+                        </div>
+                        <div class="mdl-layout-spacer"></div>
+                    </div>
+                    
+                </main>
+                {{template "footer"}}
+            </div>
+
+
+        </body>
+    </html>
+
+{{end}}

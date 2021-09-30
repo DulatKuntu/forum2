@@ -1,0 +1,80 @@
+
+{{define "authorized_header"}}
+<style>
+  .mdl-layout__header,
+  .mdl-layout__drawer-button {
+      color: black;
+  }
+</style>
+
+  <header class="mdl-layout__header mdl-layout__header--transparent">
+    <div class="mdl-layout__header-row">
+    
+        <span class="mdl-layout-title">
+            DAIRY
+        </span>
+
+        <div class="mdl-layout-spacer"></div>
+        <div class="mdl-layout__drawer">
+        </div>
+        <nav class="mdl-navigation">
+          <a class="mdl-navigation__link" href="/" style="color: black;"><i class="material-icons">home</i>Home</a>
+          <a class="mdl-navigation__link" href="/profile" style="color: black;"><i class="material-icons">person</i>Profile</a>
+          <a class="mdl-navigation__link" href="/create" style="color: black;"><i class="material-icons">add</i>New Post</a>
+          <a class="mdl-navigation__link" href="/about" style="color: black;"><i class="material-icons">info</i>About</a>
+          <a class="mdl-navigation__link" href="/logout" style="color: black;"><i class="material-icons">logout</i>Log out</a>
+        </nav>
+    </div>
+  </header>
+  <div class="mdl-layout__drawer">
+    <span class="mdl-layout-title">Dairy</span>
+    <nav class="mdl-navigation">
+      <a class="mdl-navigation__link" href="/"><i class="material-icons">home</i>Home</a>
+      <a class="mdl-navigation__link" href="/profile"><i class="material-icons">person</i>Profile</a>
+      <a class="mdl-navigation__link" href="/create"><i class="material-icons">add</i>New Post</a>
+      <a class="mdl-navigation__link" href="/about"><i class="material-icons">info</i>About</a>
+      <a class="mdl-navigation__link" href="/logout"><i class="material-icons">logout</i>Log out</a>
+    </nav>
+  </div>
+{{end}}
+
+
+
+
+{{define "unauthorized_header"}}
+<style>
+  .mdl-layout__header,
+  .mdl-layout__drawer-button {
+      color: black;
+  }
+</style>
+
+  <header class="mdl-layout__header mdl-layout__header--transparent">
+    <div class="mdl-layout__header-row">
+    
+        <span class="mdl-layout-title">
+            DAIRY
+        </span>
+
+        <div class="mdl-layout-spacer"></div>
+        <div class="mdl-layout__drawer">
+        </div>
+        <nav class="mdl-navigation">
+          <a class="mdl-navigation__link" href="/" style="color: black;"><i class="material-icons">home</i>Home</a>
+          <a class="mdl-navigation__link" href="/login" style="color: black;"><i class="material-icons">login</i>Login</a>
+          <a class="mdl-navigation__link" href="/signup" style="color: black;"><i class="material-icons">person</i>Signup</a>
+          <a class="mdl-navigation__link" href="/about" style="color: black;"><i class="material-icons">info</i>About</a>
+        </nav>
+    </div>
+  </header>
+  <div class="mdl-layout__drawer">
+    <span class="mdl-layout-title">Dairy</span>
+    <nav class="mdl-navigation">
+      <a class="mdl-navigation__link" href="/"><i class="material-icons">home</i>Home</a>
+      <a class="mdl-navigation__link" href="/login"><i class="material-icons">login</i>Login</a>
+      <a class="mdl-navigation__link" href="/signup"><i class="material-icons">person</i>Signup</a>
+      <a class="mdl-navigation__link" href="/about"><i class="material-icons">info</i>About</a>
+    </nav>
+  </div>
+{{end}}
+

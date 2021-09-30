@@ -1,0 +1,34 @@
+{{define "notfound"}}
+<!doctype html>
+
+<html>
+    <head>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+        <link rel="stylesheet" href="https://code.getmdl.io/1.3.0/material.indigo-pink.min.css">
+        <script defer src="https://code.getmdl.io/1.3.0/material.min.js"></script>
+        
+    </head>
+    <body>
+        <div class="site mdl-layout mdl-js-layout">           
+            {{if .LoggedIn}}         
+                {{template "authorized_header"}}
+            {{else}}
+                {{template "unauthorized_header"}}
+            {{end}}
+            <main class="mdl-layout__content">
+                <div class="mdl-grid">
+                    <div class="mdl-layout-spacer"></div>
+                    <div class="mdl-cell mdl-cell--4-col" style="justify-content: center;">
+                        <h3>404 This page is not found!</h3>
+                        <img src="/assets/image.png" alt="page not found">
+                    </div>
+                    <div class="mdl-layout-spacer"></div>
+                </div>
+            </main>
+            {{template "footer"}}
+        </div>
+
+    </body>
+</html>
+{{end}}
+
